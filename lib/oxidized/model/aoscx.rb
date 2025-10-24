@@ -1,4 +1,6 @@
 class Aoscx < Oxidized::Model
+  using Refinements
+
   # HP ArubaOS-CX (AOS-CX) model for Oxidized
   # Tested on CX 6200, 6300, 6400, and 8400 series switches
 
@@ -6,7 +8,7 @@ class Aoscx < Oxidized::Model
   comment '! '
 
   cmd :all do |cfg|
-    cfg.each_line.to_a[1..-2].join
+    cfg.cut_both
   end
 
   cmd :secret do |cfg|
